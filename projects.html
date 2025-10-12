@@ -23,35 +23,100 @@
   <h1>Projects</h1>
   <p>All of my repositories automatically load from GitHub below:</p>
 
-  <div id="github-projects" class="project-grid"></div>
+  <div id="projects-wrap">
+    <div id="github-status" class="text-muted">Loading repositories...</div>
+    <div id="github-projects" class="project-grid"></div>
+
+    <div id="projects-fallback" style="display:none;margin-top:14px">
+      <p class="text-muted">If repositories don't load automatically (for example when opening the file locally), you can add project links manually below or try retrying the GitHub request.</p>
+      <div style="margin:8px 0"><button id="retry-fetch" class="btn">Retry</button></div>
+      <div class="project-grid" id="manual-projects">
+        <!-- paste manual project cards here as <a class="project-card" href="#">...</a> -->
+      </div>
+    </div>
+  </div>
 </main>
 
-<script src="js/chatbot.js"></script>
-<script>
-  // Auto-fetch public repos from GitHub
-  fetch('https://api.github.com/users/tanak-pixel/repos?sort=updated')
-    .then(res => res.json())
-    .then(repos => {
-      const container = document.getElementById('github-projects');
-      repos.forEach(repo => {
-        const card = document.createElement('a');
-        card.className = 'project-card';
-        card.href = repo.html_url;
-        card.target = '_blank';
-        card.innerHTML = `
-          <h3>${repo.name}</h3>
-          <p>${repo.description || 'No description provided.'}</p>
-          <div class="text-muted" style="font-size:12px;">⭐ ${repo.stargazers_count} | ${repo.language || 'HTML'}</div>
-        `;
-        container.appendChild(card);
-      });
-    })
-    .catch(err => {
-      document.getElementById('github-projects').innerHTML = '<p>Failed to load repositories.</p>';
-      console.error(err);
-    });
+  <script src="js/chatbot.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+  // Auto-fetch public repos from GitHub with helpful fallbacks
+  (function(){
+    const status = document.getElementById('github-status');
+    const container = document.getElementById('github-projects');
+    const fallback = document.getElementById('projects-fallback');
+
+    function showFallback(msg){
+      status.textContent = msg;
+      status.style.display = 'block';
+      fallback.style.display = 'block';
+    }
+
+    // If the page is opened via file:// the browser will block the GitHub API call.
+    if(location.protocol === 'file:'){
+      showFallback('Running from local file. GitHub API requests are blocked over file:// — serve the site (e.g. `python -m http.server`) to load repositories automatically.');
+      return;
+    }
+
+    status.textContent = 'Loading repositories...';
+
+    function clearProjects(){
+      container.innerHTML = '';
+    }
+
+    async function fetchRepos(){
+      try{
+        status.textContent = 'Fetching repositories...';
+        status.style.display = 'block';
+        fallback.style.display = 'none';
+        clearProjects();
+
+        const res = await fetch('https://api.github.com/users/tanak-pixel/repos?sort=updated');
+        if(!res.ok) throw new Error('GitHub API error: ' + res.status);
+        const repos = await res.json();
+
+        if(!Array.isArray(repos) || repos.length === 0){
+          status.textContent = 'No public repositories found.';
+          return;
+        }
+
+        status.style.display = 'none';
+
+        repos.forEach(repo => {
+          const card = document.createElement('a');
+          card.className = 'project-card reveal';
+          card.href = repo.html_url;
+          card.target = '_blank';
+          card.innerHTML = `
+            <h3>${repo.name}</h3>
+            <p>${repo.description || 'No description provided.'}</p>
+            <div class="project-meta">
+              <div class="text-muted">⭐ ${repo.stargazers_count}</div>
+              <div class="text-muted">${repo.language || 'HTML'}</div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      }catch(err){
+        console.error(err);
+        showFallback('Unable to load repositories from GitHub. This may be due to network restrictions, API rate limiting, or CORS issues. Try serving the site (python -m http.server) or click Retry.');
+      }
+    }
+
+    // wire retry button
+    const retryBtn = document.getElementById('retry-fetch');
+    if(retryBtn) retryBtn.addEventListener('click', fetchRepos);
+
+    // If the page is opened via file:// the browser will block the GitHub API call.
+    if(location.protocol === 'file:'){
+      showFallback('Running from local file. GitHub API requests are blocked over file:// — serve the site (e.g. `python -m http.server`) to load repositories automatically.');
+      return;
+    }
+
+    // initial fetch
+    fetchRepos();
+  })();
 </script>
 
-  <script src="js/chatbot.js"></script>
 </body>
 </html>

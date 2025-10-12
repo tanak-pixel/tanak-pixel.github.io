@@ -47,3 +47,23 @@
     if(location.pathname.endsWith(a.getAttribute('href'))) a.classList.add('active');
   });
 })();
+
+// Reveal-on-scroll helper for timeline and other sections
+(function(){
+  if(!('IntersectionObserver' in window)){
+    // fallback: show all
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));
+    return;
+  }
+
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12});
+
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+})();

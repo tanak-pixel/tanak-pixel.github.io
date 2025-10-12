@@ -29,11 +29,8 @@
 
   function addMsg(text, from='bot'){
     const el = document.createElement('div');
-    el.style.margin = '8px 0';
-    el.style.fontSize = '14px';
-    el.innerHTML = from === 'user'
-      ? `<div style=\"text-align:right;color:#cbd5e1\">${text}</div>`
-      : `<div style=\"color:#e6edf3\">${text}</div>`;
+    el.className = 'chat-msg ' + (from === 'user' ? 'user' : 'bot');
+    el.innerText = text;
     messages.appendChild(el);
     messages.scrollTop = messages.scrollHeight;
   }
