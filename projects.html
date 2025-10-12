@@ -19,23 +19,38 @@
     </div>
   </header>
 
-  <main class="container content">
-    <h1>Projects</h1>
-    <p>All of my code and repositories are on GitHub. Below are a few categories and a link.</p>
+<main class="container content">
+  <h1>Projects</h1>
+  <p>All of my repositories automatically load from GitHub below:</p>
 
-    <div class="project-grid">
-      <a class="project-card" href="https://github.com/tanak-pixel" target="_blank" rel="noopener">
-        <h3>GitHub — Tanak's Repos</h3>
-        <p>Browse course projects, utilities, and experiments.</p>
-      </a>
+  <div id="github-projects" class="project-grid"></div>
+</main>
 
-      <!-- Add static featured projects if you want individual pages/case studies -->
-      <div class="project-card">
-        <h3>Course Projects — Data Structures & OS</h3>
-        <p>Assignments and lab projects from CSCI 3302, 3321, 3341, etc.</p>
-      </div>
-    </div>
-  </main>
+<script src="js/chatbot.js"></script>
+<script>
+  // Auto-fetch public repos from GitHub
+  fetch('https://api.github.com/users/tanak-pixel/repos?sort=updated')
+    .then(res => res.json())
+    .then(repos => {
+      const container = document.getElementById('github-projects');
+      repos.forEach(repo => {
+        const card = document.createElement('a');
+        card.className = 'project-card';
+        card.href = repo.html_url;
+        card.target = '_blank';
+        card.innerHTML = `
+          <h3>${repo.name}</h3>
+          <p>${repo.description || 'No description provided.'}</p>
+          <div class="text-muted" style="font-size:12px;">⭐ ${repo.stargazers_count} | ${repo.language || 'HTML'}</div>
+        `;
+        container.appendChild(card);
+      });
+    })
+    .catch(err => {
+      document.getElementById('github-projects').innerHTML = '<p>Failed to load repositories.</p>';
+      console.error(err);
+    });
+</script>
 
   <script src="js/chatbot.js"></script>
 </body>
