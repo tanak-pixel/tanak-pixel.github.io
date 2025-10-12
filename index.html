@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tanak Solanki — Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <a href="index.html" class="logo">TS</a>
+        <div class="brand-text">
+          <div class="name">Tanak Solanki</div>
+          <div class="title">Computer Science Student</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://github.com/tanak-pixel" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+
+      <div class="contact-quick">
+        <a href="mailto:tanak.solanki05@gmail.com">Email</a>
+        <a href="tel:+19362250314">Phone</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Animated intro -->
+  <section class="intro">
+    <div id="initials-wrap">
+      <svg id="initials" viewBox="0 0 300 140" preserveAspectRatio="xMidYMid meet">
+        <!-- TS text as SVG paths (keeps crisp animation) -->
+        <defs>
+          <linearGradient id="g" x1="0" x2="1">
+            <stop offset="0" stop-color="#6d28d9"/>
+            <stop offset="1" stop-color="#ec4899"/>
+          </linearGradient>
+        </defs>
+        <text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle"
+              font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="92"
+              fill="none" stroke="url(#g)" stroke-width="2" id="initials-text">
+          TS
+        </text>
+      </svg>
+      <canvas id="intro-canvas"></canvas>
+    </div>
+
+    <div class="hero-copy">
+      <h1>Hi — I’m <strong>Tanak Solanki</strong></h1>
+      <p>Computer Science Student. Aspiring Software Engineer. I build clean, practical software and love learning new tools.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="projects.html">View Projects</a>
+        <a class="btn ghost" href="Tanak%20Solanki-resume.pdf" target="_blank">Resume</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inline small feature blocks -->
+  <section class="features container">
+    <div class="card">
+      <h3>Help Desk @ SFA</h3>
+      <p>IT support experience: Office 365, mySFA portal, password resets, device & network troubleshooting.</p>
+    </div>
+    <div class="card">
+      <h3>Tech</h3>
+      <p>Python · Java · C# · SQL · HTML/CSS · JavaScript · VS Code · Visual Studio · Git</p>
+    </div>
+    <div class="card">
+      <h3>Explore</h3>
+      <p><a href="https://github.com/tanak-pixel" target="_blank">GitHub</a> • <a href="https://www.linkedin.com/in/tanak-solanki/" target="_blank">LinkedIn</a></p>
+    </div>
+  </section>
+
+  <!-- Chatbot (floating bubble) -->
+  <div id="chat-root"></div>
+
+  <script src="js/chatbot.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

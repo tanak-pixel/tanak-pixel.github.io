@@ -1,0 +1,81 @@
+:root{
+  --bg:#05060a;
+  --panel:#0b0d12;
+  --muted:#9aa1b3;
+  --accent1: #6d28d9; /* purple */
+  --accent2: #ec4899; /* pink */
+  --glass: rgba(255,255,255,0.02);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:linear-gradient(180deg,var(--bg),#0a0b10 60%);
+  color:#dbeafe;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* container */
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* topbar */
+.topbar{position:sticky;top:0;background:rgba(3,3,6,0.4);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.03);z-index:60}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{display:inline-flex;width:46px;height:46px;background:linear-gradient(135deg,var(--accent1),var(--accent2));align-items:center;justify-content:center;border-radius:8px;font-weight:700;color:#fff}
+.brand-text .name{font-weight:700}
+.title{font-size:12px;color:var(--muted)}
+.nav{display:flex;gap:18px;align-items:center}
+.nav a{color:var(--muted);text-decoration:none;font-size:14px}
+.nav a.active, .nav a:hover{color:var(--accent1)}
+
+/* hero */
+.intro{display:grid;grid-template-columns:1fr;gap:28px;padding:48px 0;align-items:center}
+@media(min-width:920px){ .intro{grid-template-columns:460px 1fr} }
+
+#initials-wrap{position:relative;width:100%;height:280px;display:flex;align-items:center;justify-content:center}
+#initials{width:360px;height:140px;overflow:visible}
+#initials-text{stroke-dasharray:800;stroke-dashoffset:800;animation:draw 1.6s ease-out forwards, glow 1.6s 0.6s ease-out forwards}
+@keyframes draw{
+  to{stroke-dashoffset:0}
+}
+@keyframes glow{
+  0%{filter:drop-shadow(0 0 0 var(--accent1))}
+  100%{filter:drop-shadow(0 8px 24px rgba(236,72,153,0.25))}
+}
+#intro-canvas{position:absolute;inset:0;pointer-events:none}
+
+/* hero text */
+.hero-copy h1{font-size:34px;margin:0}
+.hero-copy p{color:var(--muted);margin-top:12px;max-width:52ch}
+.hero-actions{margin-top:20px;display:flex;gap:12px}
+.btn{display:inline-block;padding:10px 16px;border-radius:8px;text-decoration:none}
+.btn.primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:white}
+.btn.ghost{border:1px solid rgba(255,255,255,0.06);color:var(--muted);background:transparent}
+
+/* features */
+.features{display:grid;grid-template-columns:1fr;gap:16px;margin-top:28px}
+@media(min-width:800px){ .features{grid-template-columns:repeat(3,1fr)} }
+.card{background:var(--panel);padding:18px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+
+/* content pages */
+.content{padding:40px 0}
+.project-grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:800px){ .project-grid{grid-template-columns:repeat(2,1fr)} }
+.project-card{display:block;padding:18px;background:var(--panel);border-radius:10px;border:1px solid rgba(255,255,255,0.03);text-decoration:none;color:inherit}
+
+/* chatbot bubble */
+#chat-root{position:fixed;right:24px;bottom:24px;z-index:999}
+.chat-toggle{background:linear-gradient(90deg,var(--accent1),var(--accent2));width:56px;height:56px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#fff;border:none;cursor:pointer;box-shadow:0 6px 25px rgba(0,0,0,0.5)}
+.chat-window{width:360px;height:480px;background:linear-gradient(180deg,rgba(10,10,12,0.98),#07070a);border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.04);box-shadow:0 20px 50px rgba(0,0,0,0.6)}
+.chat-header{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.03);display:flex;justify-content:space-between;align-items:center}
+.chat-messages{height:calc(100% - 132px);padding:12px;overflow:auto}
+.chat-input{display:flex;padding:12px;border-top:1px solid rgba(255,255,255,0.03);gap:8px}
+.chat-input input{flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted)}
+.chat-input button{padding:8px 12px;border-radius:8px;border:none;background:var(--accent1);color:white}
+
+/* small utilities */
+.text-muted{color:var(--muted);font-size:13px}
