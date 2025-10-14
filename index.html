@@ -1,90 +1,1124 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tanak Solanki — Portfolio</title>
-  <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanak Solanki - Computer Science Student & Developer</title>
+    <meta name="description" content="Computer Science student at Stephen F. Austin State University. Software Developer passionate about creating innovative solutions.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --accent-purple: #8b5cf6;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero .subtitle i {
+            font-size: 1.8rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        /* Background Animation */
+        .bg-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+            filter: blur(80px);
+            animation: float 20s infinite;
+        }
+
+        .circle:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .circle:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            bottom: 20%;
+            right: 15%;
+            animation-delay: 5s;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .experience-card:hover {
+            border-color: var(--accent);
+            transform: translateX(8px);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .experience-title h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-company {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .experience-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .experience-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-card li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .experience-card li:before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+        }
+
+        .project-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .project-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--accent);
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.5rem;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        /* Chatbot */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+            transition: transform 0.3s;
+            z-index: 999;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-container {
+            position: fixed;
+            bottom: 6rem;
+            right: 2rem;
+            width: 350px;
+            max-width: calc(100vw - 2rem);
+            height: 500px;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            z-index: 998;
+        }
+
+        .chatbot-container.active {
+            display: flex;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            max-width: 80%;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .message.bot {
+            background: rgba(59, 130, 246, 0.2);
+            align-self: flex-start;
+        }
+
+        .message.user {
+            background: var(--accent);
+            align-self: flex-end;
+        }
+
+        .chatbot-input-container {
+            padding: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chatbot-input {
+            flex: 1;
+            background: var(--bg-dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 0.75rem;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .chatbot-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .chatbot-send {
+            background: var(--accent);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .chatbot-send:hover {
+            background: var(--accent-hover);
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .quick-action {
+            background: var(--bg-dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quick-action:hover {
+            border-color: var(--accent);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 5%;
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(50px, 50px);
+            }
+            50% {
+                transform: translate(25px, 100px);
+            }
+            75% {
+                transform: translate(-25px, 50px);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 5%;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(10px);
+                width: 70%;
+                padding: 2rem;
+                border-left: 1px solid rgba(255, 255, 255, 0.1);
+                transition: right 0.3s;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .chatbot-container {
+                width: calc(100vw - 2rem);
+                right: 1rem;
+            }
+
+            .chatbot-toggle {
+                right: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand">
-        <a href="index.html" class="logo">TS</a>
-        <div class="brand-text">
-          <div class="name">Tanak Solanki</div>
-          <div class="title">Computer Science Student</div>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">TS.</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#work">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="bg-animation">
+            <div class="circle"></div>
+            <div class="circle"></div>
         </div>
-      </div>
+        <div class="hero-content">
+            <p class="subtitle">Computer Science Student</p>
+            <h1>
+                Hi, I'm <span class="gradient-text">Tanak Solanki</span>
+            </h1>
+            <p>Aspiring Software Engineer at Stephen F. Austin State University, passionate about building innovative solutions and solving complex problems through code.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="./Tanak Solanki-resume.pdf" download class="btn btn-secondary">
+                    <i class="fas fa-download"></i> Download Resume
+                </a>
+            </div>
+        </div>
+    </section>
 
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="https://github.com/tanak-pixel" target="_blank" rel="noopener">GitHub</a>
-      </nav>
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div>
+                <div class="about-text">
+                    <p>I'm a Computer Science student at Stephen F. Austin State University with a strong foundation in programming and problem-solving. Currently pursuing my Bachelor's degree (expected December 2026) with a 3.00 CGPA.</p>
+                    <p>As an IT Technician at SFA, I provide technical support to students and faculty, troubleshooting issues ranging from account management to network connectivity. I'm eager to contribute to real-world software development projects and collaborate with experienced developers.</p>
+                    <p>Active member of the International Students Association, where I help organize cultural events and support international students in integrating into the university community.</p>
+                </div>
+                <div class="skills">
+                    <span class="skill-tag">C#</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">HTML/CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">.NET Framework</span>
+                    <span class="skill-tag">Data Structures</span>
+                    <span class="skill-tag">Algorithm Analysis</span>
+                </div>
+            </div>
+            <div class="about-stats">
+                <div class="stat-card">
+                    <div class="stat-number">3.00</div>
+                    <div class="stat-label">GPA</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2026</div>
+                    <div class="stat-label">Graduation</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Skills</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <div class="contact-quick">
-        <a href="mailto:tanak.solanki05@gmail.com">Email</a>
-        <a href="tel:+19362250314">Phone</a>
-      </div>
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="experience-grid">
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div class="experience-title">
+                        <h3>Student IT Technician</h3>
+                        <p class="experience-company">Stephen F. Austin State University</p>
+                    </div>
+                    <p class="experience-date">Aug 2025 - Present</p>
+                </div>
+                <ul>
+                    <li>Assisted student IT support, troubleshooting issues related to mySFA student portal accounts, Office 365, wireless networks and password reset requests</li>
+                    <li>Provided front-line technical support for students, helping with device repairs and connectivity problems</li>
+                    <li>Contributed to maintaining classroom technology, assisting faculty with electronic equipment such as computers, document cameras and projectors</li>
+                    <li>Helped manage printer and scanning support requests from the campus community</li>
+                    <li>Supported students with various IT services, including email, calendars and general Office 365 applications</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div class="experience-title">
+                        <h3>Note-Taker</h3>
+                        <p class="experience-company">Disability Services, SFA</p>
+                    </div>
+                    <p class="experience-date">Aug 2023 - Present</p>
+                </div>
+                <ul>
+                    <li>Provided detailed and structured notes for students requiring academic accommodation</li>
+                    <li>Collaborated with faculty and disability services to ensure accessibility and comprehension</li>
+                    <li>Adapted note-taking techniques to support various learning styles</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div class="experience-title">
+                        <h3>File Assistant</h3>
+                        <p class="experience-company">Desk Job, Ndola, Zambia</p>
+                    </div>
+                    <p class="experience-date">Apr 2022 - May 2022</p>
+                </div>
+                <ul>
+                    <li>Organized and maintained document files for efficient retrieval</li>
+                    <li>Assisted in virtual presentations by coordinating with senior staff via Zoom</li>
+                    <li>Provided administrative support ensuring a smooth workflow</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="work">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Data Structures Implementation</h3>
+                    <p>Comprehensive implementation of various data structures including linked lists, trees, and graphs with algorithmic analysis.</p>
+                    <div class="project-tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">Algorithms</span>
+                        <span class="tag">Data Structures</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <i class="fas fa-server"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Client-Server Application</h3>
+                    <p>Developed a client-server application demonstrating network programming concepts and real-time communication.</p>
+                    <div class="project-tags">
+                        <span class="tag">C#</span>
+                        <span class="tag">.NET</span>
+                        <span class="tag">Networking</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Portfolio Website</h3>
+                    <p>Modern, responsive portfolio website with integrated chatbot for visitor interaction and information sharing.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Responsive Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Let's Connect</h2>
+        <div class="contact-content">
+            <p>I'm always interested in hearing about internship opportunities, collaborative projects, or just connecting with fellow developers. Feel free to reach out!</p>
+            <a href="mailto:tanak.solanki05@gmail.com" class="btn btn-primary">
+                <i class="fas fa-envelope"></i> Send Me an Email
+            </a>
+            <div class="social-links">
+                <a href="https://github.com/tanak-pixel" class="social-link" title="GitHub" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/tanak-solanki" class="social-link" title="LinkedIn" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="tel:+19362250314" class="social-link" title="Phone">
+                    <i class="fas fa-phone"></i>
+                </a>
+                <a href="./Tanak Solanki-resume.pdf" class="social-link" title="Resume" download>
+                    <i class="fas fa-file-pdf"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Tanak Solanki. Built with passion in Lufkin, Texas.</p>
+    </footer>
+
+    <!-- Chatbot -->
+    <button class="chatbot-toggle" id="chatbotToggle">
+        <i class="fas fa-comment"></i>
+    </button>
+
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <h3>Chat with me!</h3>
+            <button class="chatbot-send" id="chatbotSend">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
     </div>
-  </header>
 
-  <!-- Animated intro -->
-  <section class="intro">
-    <div id="initials-wrap">
-      <svg id="initials" viewBox="0 0 300 140" preserveAspectRatio="xMidYMid meet">
-        <!-- TS text as SVG paths (keeps crisp animation) -->
-        <defs>
-          <linearGradient id="g" x1="0" x2="1">
-            <stop offset="0" stop-color="#6d28d9"/>
-            <stop offset="1" stop-color="#ec4899"/>
-          </linearGradient>
-        </defs>
-        <text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle"
-              font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="92"
-              fill="none" stroke="url(#g)" stroke-width="2" id="initials-text">
-          TS
-        </text>
-      </svg>
-      <canvas id="intro-canvas"></canvas>
-    </div>
+    <script>
+        // Navigation Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
 
-    <div class="hero-copy">
-      <h1>Hi — I’m <strong>Tanak Solanki</strong></h1>
-      <div class="hero-sub">Computer Science Student • Aspiring Software Engineer</div>
-      <p> I build clean, practical software and enjoy solving real problems through code. I focus on web tooling, small automation, and accessible UI.</p>
-      <div class="hero-actions">
-        <a class="btn primary" href="projects.html">View Projects</a>
-        <a class="btn ghost" href="Tanak%20Solanki-resume.pdf" target="_blank">Resume</a>
-        <a class="btn" href="https://github.com/tanak-pixel" target="_blank">GitHub</a>
-      </div>
-      <div class="hero-meta text-muted">Based in Texas · Open to internships & freelance</div>
-    </div>
-  </section>
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
 
-  <!-- Inline small feature blocks -->
-  <section class="features container">
-    <div class="card">
-      <h3>Help Desk @ SFA</h3>
-      <p>IT support experience: Office 365, mySFA portal, password resets, device & network troubleshooting.</p>
-    </div>
-    <div class="card">
-      <h3>Tech</h3>
-      <p>Python · Java · C# · SQL · HTML/CSS · JavaScript · VS Code · Visual Studio · Git</p>
-    </div>
-    <div class="card">
-      <h3>Explore</h3>
-      <p><a href="https://github.com/tanak-pixel" target="_blank">GitHub</a> • <a href="https://www.linkedin.com/in/tanak-solanki/" target="_blank">LinkedIn</a></p>
-    </div>
-  </section>
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
 
-  <!-- Chatbot (floating bubble) -->
-  <div id="chat-root"></div>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-  <script src="js/chatbot.js"></script>
-  <script src="js/main.js"></script>
+        // Add scroll effect to navigation
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.8)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(section);
+        });
+
+        // Chatbot functionality
+        const chatbotToggle = document.getElementById('chatbotToggle');
+        const chatbotContainer = document.getElementById('chatbotContainer');
+        const chatbotClose = document.getElementById('chatbotClose');
+        const chatbotInput = document.getElementById('chatbotInput');
+        const chatbotSend = document.getElementById('chatbotSend');
+        const chatbotMessages = document.getElementById('chatbotMessages');
+
+        chatbotToggle.addEventListener('click', () => {
+            chatbotContainer.classList.toggle('active');
+        });
+
+        chatbotClose.addEventListener('click', () => {
+            chatbotContainer.classList.remove('active');
+        });
+
+        // Chatbot knowledge base
+        const knowledgeBase = {
+            about: {
+                keywords: ['about', 'who', 'introduce', 'yourself', 'tanak'],
+                response: "Tanak Solanki is a Computer Science student at Stephen F. Austin State University, expected to graduate in December 2026. He's currently working as an IT Technician at SFA, providing technical support to students and faculty. He's passionate about software development and problem-solving!"
+            },
+            skills: {
+                keywords: ['skill', 'technology', 'programming', 'language', 'know'],
+                response: "Tanak is proficient in C#, Java, SQL, HTML/CSS, JavaScript, and Python. He has experience with .NET Framework, Git, data structures, and algorithm analysis. He's also skilled in troubleshooting IT issues, Office 365, and network connectivity."
+            },
+            experience: {
+                keywords: ['experience', 'work', 'job', 'employment', 'career'],
+                response: "Tanak currently works as an IT Technician at SFA (since Aug 2025), where he provides technical support and maintains classroom technology. He's also been a Note-Taker for Disability Services since Aug 2023, and previously worked as a File Assistant in Zambia."
+            },
+            education: {
+                keywords: ['education', 'school', 'university', 'degree', 'study', 'gpa'],
+                response: "Tanak is pursuing a Bachelor's in Computer Science at Stephen F. Austin State University with a 3.00 GPA. He's taken courses in Data Structures, Client-Server Programming, Algorithm Analysis, and Operating Systems. Expected graduation: December 2026."
+            },
+            contact: {
+                keywords: ['contact', 'email', 'phone', 'reach', 'connect', 'linkedin', 'github'],
+                response: "You can reach Tanak at:\n📧 Email: tanak.solanki05@gmail.com\n📱 Phone: +1 (936) 225-0314\n💼 LinkedIn: linkedin.com/in/tanak-solanki\n🐙 GitHub: github.com/tanak-pixel"
+            },
+            projects: {
+                keywords: ['project', 'portfolio', 'work', 'built', 'created'],
+                response: "Tanak has worked on several projects including data structure implementations in Java, a client-server application in C#, and this portfolio website with an integrated chatbot. Check out his GitHub for more projects!"
+            },
+            location: {
+                keywords: ['location', 'where', 'live', 'based', 'from'],
+                response: "Tanak is based in Lufkin, Texas, and studies at Stephen F. Austin State University in Nacogdoches, Texas."
+            },
+            internship: {
+                keywords: ['internship', 'opportunity', 'hiring', 'available', 'looking'],
+                response: "Tanak is actively seeking software developer internship opportunities! He's eager to gain hands-on experience and contribute to real-world projects. Feel free to reach out to discuss opportunities!"
+            }
+        };
+
+        function getBotResponse(userMessage) {
+            const message = userMessage.toLowerCase();
+            
+            // Check for greetings
+            if (message.match(/^(hi|hello|hey|greetings)/)) {
+                return "Hello! I'm here to help you learn more about Tanak. What would you like to know?";
+            }
+            
+            // Check for thanks
+            if (message.match(/(thank|thanks)/)) {
+                return "You're welcome! Is there anything else you'd like to know about Tanak?";
+            }
+            
+            // Search knowledge base
+            for (const [category, data] of Object.entries(knowledgeBase)) {
+                if (data.keywords.some(keyword => message.includes(keyword))) {
+                    return data.response;
+                }
+            }
+            
+            // Default response
+            return "I'm not sure about that. You can ask me about Tanak's skills, experience, education, projects, or contact information. Or feel free to reach out directly at tanak.solanki05@gmail.com!";
+        }
+
+        function addMessage(text, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+            messageDiv.textContent = text;
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        function askQuestion(question) {
+            addMessage(question, true);
+            setTimeout(() => {
+                const response = getBotResponse(question);
+                addMessage(response);
+            }, 500);
+        }
+
+        function sendMessage() {
+            const message = chatbotInput.value.trim();
+            if (message) {
+                addMessage(message, true);
+                chatbotInput.value = '';
+                
+                setTimeout(() => {
+                    const response = getBotResponse(message);
+                    addMessage(response);
+                }, 500);
+            }
+        }
+
+        chatbotSend.addEventListener('click', sendMessage);
+
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Make askQuestion function global for quick action buttons
+        window.askQuestion = askQuestion;
+    </script>
 </body>
-</html>
+</html>="chatbot-close" id="chatbotClose">×</button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot">
+                Hi! I'm Tanak's assistant. How can I help you today?
+                <div class="quick-actions">
+                    <button class="quick-action" onclick="askQuestion('Tell me about Tanak')">About Tanak</button>
+                    <button class="quick-action" onclick="askQuestion('What are his skills?')">Skills</button>
+                    <button class="quick-action" onclick="askQuestion('Contact information?')">Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input-container">
+            <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Type your message...">
+            <button class
