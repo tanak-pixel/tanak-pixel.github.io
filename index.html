@@ -1,0 +1,1048 @@
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tanak Solanki | Software Engineer &amp; ServiceNow Developer</title>
+<meta content="Portfolio of Tanak Solanki: software engineering, ServiceNow, IT support, and projects in C#, React, Python, and Java." name="description"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --accent-purple: #8b5cf6;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero .subtitle i {
+            font-size: 1.8rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        /* Background Animation */
+        .bg-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+            filter: blur(80px);
+            animation: float 20s infinite;
+        }
+
+        .circle:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .circle:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            bottom: 20%;
+            right: 15%;
+            animation-delay: 5s;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .experience-card:hover {
+            border-color: var(--accent);
+            transform: translateX(8px);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .experience-title h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-company {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .experience-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .experience-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-card li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .experience-card li:before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+        }
+
+        .project-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .project-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--accent);
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.5rem;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        /* Chatbot */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+            transition: transform 0.3s;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-container {
+            position: fixed;
+            bottom: 6rem;
+            right: 2rem;
+            width: 380px;
+            max-width: calc(100vw - 2rem);
+            height: 550px;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            z-index: 998;
+        }
+
+        .chatbot-container.active {
+            display: flex;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+            padding: 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        .chatbot-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            line-height: 1;
+        }
+
+        .chatbot-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: var(--bg-dark);
+        }
+
+        .chatbot-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chatbot-messages::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        .chatbot-messages::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 3px;
+        }
+
+        .message {
+            padding: 0.875rem 1.125rem;
+            border-radius: 12px;
+            max-width: 85%;
+            animation: slideIn 0.3s ease-out;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+
+        .message.bot {
+            background: rgba(59, 130, 246, 0.15);
+            align-self: flex-start;
+            color: var(--text-primary);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .message.user {
+            background: var(--accent);
+            align-self: flex-end;
+            color: white;
+        }
+
+        .chatbot-input-container {
+            padding: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: 0.75rem;
+            background: var(--bg-card);
+        }
+
+        .chatbot-input {
+            flex: 1;
+            background: var(--bg-dark);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 0.875rem 1rem;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-family: inherit;
+        }
+
+        .chatbot-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .chatbot-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .chatbot-send {
+            background: var(--accent);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            padding: 0.875rem 1.25rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbot-send:hover {
+            background: var(--accent-hover);
+        }
+
+        .chatbot-send:active {
+            transform: scale(0.95);
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.75rem;
+        }
+
+        .quick-action {
+            background: var(--bg-dark);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--text-primary);
+        }
+
+        .quick-action:hover {
+            border-color: var(--accent);
+            background: rgba(59, 130, 246, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 5%;
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(50px, 50px);
+            }
+            50% {
+                transform: translate(25px, 100px);
+            }
+            75% {
+                transform: translate(-25px, 50px);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 5%;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(10px);
+                width: 70%;
+                padding: 2rem;
+                border-left: 1px solid rgba(255, 255, 255, 0.1);
+                transition: right 0.3s;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .chatbot-container {
+                width: calc(100vw - 2rem);
+                right: 1rem;
+            }
+
+            .chatbot-toggle {
+                right: 1rem;
+            }
+        }
+    
+html{scroll-behavior:smooth}section{scroll-margin-top:85px}.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}.cert-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:1.5rem}.cert-card h3{font-size:1.05rem;margin-bottom:.5rem}.cert-card p{color:var(--accent)}.project-card{cursor:default}.project-image{font-size:2.5rem}.nav-links a:focus-visible,.btn:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}@media(max-width:768px){.hero{padding-top:100px}.projects-grid{grid-template-columns:minmax(0,1fr)}.chatbot-container{bottom:5.5rem;height:min(550px,calc(100dvh - 7rem))}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+.project-github-link{display:inline-block;margin-top:1rem;color:#93c5fd;text-decoration:none;font-weight:600}.project-github-link:hover,.project-github-link:focus-visible{text-decoration:underline;color:white}
+</style>
+<style>
+/* Portfolio refresh: refined visual system and subtle motion */
+:root{--bg-dark:#080d17;--bg-card:#111a2a;--text-primary:#f3f7ff;--text-secondary:#a8b5c9;--accent:#74a9ff;--accent-hover:#4e90fa;--accent-purple:#aa94f9;--line:rgba(183,204,242,.12)}
+html{scroll-behavior:smooth;scroll-padding-top:90px}body{background:radial-gradient(ellipse 70% 28% at 80% 0%,rgba(56,98,180,.14),transparent 70%),var(--bg-dark);letter-spacing:-.012em}
+::selection{background:#416caa;color:#fff}a,button{ -webkit-tap-highlight-color:transparent}a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #a7c6ff;outline-offset:4px}
+nav{padding:1rem clamp(1.25rem,5vw,5rem);background:rgba(8,13,23,.84);border-bottom:1px solid var(--line);transition:background .25s,box-shadow .25s}nav.scrolled{background:rgba(8,13,23,.96);box-shadow:0 8px 32px rgba(0,0,0,.14)}.logo{font-size:1.65rem;letter-spacing:-.07em}.nav-links{gap:clamp(.75rem,2vw,2rem)}.nav-links a{font-size:.88rem;font-weight:550;position:relative;white-space:nowrap}.nav-links a:after{content:'';position:absolute;left:0;right:100%;bottom:-7px;height:2px;background:var(--accent);transition:right .25s}.nav-links a:hover:after,.nav-links a[aria-current="true"]:after{right:0}
+section{max-width:1200px;padding:6rem clamp(1.25rem,5vw,5rem)}section h2{font-size:clamp(1.9rem,4vw,2.65rem);letter-spacing:-.045em;margin-bottom:2.4rem}section h2:after{content:'';display:block;width:45px;height:3px;margin:15px auto 0;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--accent-purple))}
+.hero{min-height:min(800px,100svh);padding-top:110px;padding-bottom:85px;max-width:1200px}.hero-content{max-width:850px}.hero h1{font-size:clamp(3.1rem,7vw,6.1rem);letter-spacing:-.07em;line-height:1.08;margin-bottom:1.4rem}.hero .subtitle{font-size:.78rem;letter-spacing:.19em;font-weight:700;text-transform:uppercase;margin-bottom:1.5rem}.hero p:not(.subtitle){font-size:clamp(1.04rem,2vw,1.25rem);line-height:1.8;max-width:680px}.gradient-text{background:linear-gradient(105deg,#87b7ff,#bba8ff 60%,#e5b8fa);-webkit-background-clip:text;background-clip:text}.circle{opacity:.45;animation:ambientFloat 24s ease-in-out infinite alternate}.circle:nth-child(2){animation-delay:-12s}
+.btn{border-radius:10px;padding:.86rem 1.5rem;font-size:.93rem;transition:transform .22s ease,background .22s ease,border-color .22s ease,box-shadow .22s ease}.btn-primary{color:#07101e;background:#8bb7ff}.btn-primary:hover{background:#b1cfff;box-shadow:0 8px 28px rgba(91,151,244,.18)}.btn-secondary{border:1px solid var(--line);background:rgba(255,255,255,.025)}.btn:hover{transform:translateY(-3px)}
+.about-content{gap:3.5rem}.about-text p{font-size:1rem;line-height:1.9}.skill-tag,.tag{transition:background .2s,border-color .2s,transform .2s}.skill-tag{font-size:.85rem;background:rgba(116,169,255,.055);border-color:var(--line)}.skill-tag:hover{background:rgba(116,169,255,.1)}.about-stats{gap:1rem}.stat-card,.experience-card,.project-card,.cert-card{background:linear-gradient(155deg,rgba(23,34,54,.95),rgba(12,20,34,.95));border:1px solid var(--line);box-shadow:0 12px 32px rgba(0,0,0,.08)}.stat-card{padding:1.4rem;border-radius:14px}.stat-number{font-size:1.8rem}.experience-grid{gap:1.15rem}.experience-card{padding:1.8rem;border-radius:16px}.experience-card:hover{transform:translateY(-3px);border-color:rgba(116,169,255,.32)}.experience-title h3{font-size:1.24rem}.experience-card li{line-height:1.75}
+.projects-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.3rem}.project-card{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s}.project-card:hover{transform:translateY(-5px);border-color:rgba(116,169,255,.4);box-shadow:0 18px 48px rgba(0,0,0,.22)}.project-image{aspect-ratio:auto;height:125px;font-size:2.4rem;background:linear-gradient(135deg,#152b49,#20244a)!important;color:#a9c8ff}.project-content{display:flex;flex-direction:column;flex:1;padding:1.65rem}.project-content h3{font-size:1.3rem}.project-content p{line-height:1.7}.project-tags{margin-top:auto}.project-github-link{display:inline-flex;align-self:flex-start;margin-top:1.3rem;color:#a9c9ff;text-decoration:none;font-weight:650;font-size:.9rem}.project-github-link:hover{text-decoration:underline;text-underline-offset:4px}
+.cert-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.cert-card{transition:transform .25s,border-color .25s}.cert-card:hover{transform:translateY(-3px);border-color:rgba(116,169,255,.3)}.cert-card h3{line-height:1.5}.cert-card p{font-size:.86rem}.social-link{border-color:var(--line);border-radius:12px}.social-link:hover{background:#2b4d81}.chatbot-toggle{width:55px;height:55px;bottom:1.4rem;right:1.4rem;box-shadow:0 8px 30px rgba(41,82,148,.28)}.chatbot-container{bottom:5.7rem;right:1.4rem;border-color:var(--line)}footer{font-size:.88rem}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.75,.2,1)}.reveal.is-visible{opacity:1;transform:none}@keyframes ambientFloat{from{transform:translate(-10px,0)}to{transform:translate(24px,25px)}}
+@media(max-width:900px){.cert-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.nav-links{gap:1rem}}
+@media(max-width:768px){nav{padding:1rem 5%}.nav-links{top:65px;width:min(320px,85%);border-radius:0 0 0 16px;box-shadow:0 18px 35px rgba(0,0,0,.25);gap:1.3rem}.hero{min-height:85svh;padding-top:115px}.hero .subtitle{font-size:.7rem;letter-spacing:.1em}.projects-grid,.cert-grid{grid-template-columns:1fr}.about-content{gap:2rem}.project-image{height:105px}.experience-card{padding:1.35rem}section{padding-top:4.4rem;padding-bottom:4.4rem}}
+@media(max-width:430px){.about-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stat-card{padding:1rem}.stat-number{font-size:1.5rem}.hero h1{font-size:clamp(2.7rem,12vw,3.5rem)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.circle{animation:none}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style></head>
+<body>
+<!-- Navigation -->
+<nav aria-label="Main navigation">
+<div class="logo">TS.</div>
+<ul class="nav-links" id="navLinks">
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#work">Projects</a></li>
+<li><a href="#contact">Contact</a></li><li><a href="#certifications">Certifications</a></li>
+</ul>
+<button aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle" id="menuToggle">
+<i class="fas fa-bars"></i>
+</button>
+</nav>
+<!-- Hero Section -->
+<section class="hero" id="home">
+<div class="bg-animation">
+<div class="circle"></div>
+<div class="circle"></div>
+</div>
+<div class="hero-content">
+<p class="subtitle">SOFTWARE ENGINEERING  /  SERVICENOW  /  IT SUPPORT</p>
+<h1>
+                Hi, I'm <span class="gradient-text">Tanak Solanki</span>
+</h1>
+<p>Computer Science student at Stephen F. Austin State University, building reliable applications and solving real-world problems with C#, Java, Python, React, and ServiceNow.</p>
+<div class="cta-buttons">
+<a class="btn btn-primary" href="#contact">Get In Touch</a>
+<a class="btn btn-secondary" download="" href="Tanak_Solanki_Resume.pdf">
+<i class="fas fa-download"></i> Download Resume
+                </a>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="reveal" id="about">
+<h2>About Me</h2>
+<div class="about-content">
+<div>
+<div class="about-text"><p>I am pursuing a B.S. in Computer Science at Stephen F. Austin State University, graduating in December 2026 (GPA: 3.2). I focus on software engineering, backend systems, and practical automation.</p><p>At SFA, I resolve 20+ IT support tickets weekly and troubleshoot Microsoft 365, networks, devices, and classroom technology. Through the Provalus Meridian Program, I have developed my ServiceNow platform skills in scripting, configuration, and enterprise workflows.</p><p>My projects explore event-driven inventory systems, incident reporting, computer vision, and multithreaded networking. I am interested in full-time software engineering, ServiceNow development, and technical roles.</p></div>
+<div class="skills"><span class="skill-tag">C#</span><span class="skill-tag">Java</span><span class="skill-tag">Python</span><span class="skill-tag">JavaScript</span><span class="skill-tag">TypeScript</span><span class="skill-tag">SQL</span><span class="skill-tag">HTML/CSS</span><span class="skill-tag">React</span><span class="skill-tag">ASP.NET Core</span><span class="skill-tag">.NET 8</span><span class="skill-tag">REST APIs</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">Docker</span><span class="skill-tag">Git</span><span class="skill-tag">ServiceNow</span><span class="skill-tag">Microsoft 365</span><span class="skill-tag">OpenCV</span><span class="skill-tag">YOLO</span><span class="skill-tag">Multithreading</span></div>
+</div>
+<div class="about-stats">
+<div class="stat-card">
+<div class="stat-number">3.2</div>
+<div class="stat-label">GPA</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">Dec 2026</div>
+<div class="stat-label">Graduation</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">20+</div>
+<div class="stat-label">Tickets / Week</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">4</div>
+<div class="stat-label">Featured Projects</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Experience Section -->
+<section class="reveal" id="experience">
+<h2>Experience</h2>
+<div class="experience-grid"><div class="experience-card"><div class="experience-header"><div class="experience-title"><h3>Meridian Program Intern</h3><p class="experience-company">Provalus</p></div><p class="experience-date">Jul–Aug 2026; Sep 2026 – Present</p></div><ul><li>Completed structured ServiceNow training in JavaScript scripting, application configuration, and data management.</li><li>Continuing application-development training and preparing for the ServiceNow Certified Application Developer (CAD) exam, with emphasis on APIs, integrations, and enterprise workflows.</li></ul></div><div class="experience-card"><div class="experience-header"><div class="experience-title"><h3>Student IT Support Assistant</h3><p class="experience-company">Stephen F. Austin State University</p></div><p class="experience-date">Aug 2025 – Present</p></div><ul><li>Resolve 20+ weekly IT support tickets involving mySFA, Microsoft 365, and network connectivity.</li><li>Set up and troubleshoot classroom technology and diagnose hardware, printer, and scanner issues.</li></ul></div></div>
+</section>
+<!-- Projects Section -->
+<section class="reveal" id="work">
+<h2>Projects</h2>
+<div class="projects-grid"><article class="project-card reveal"><div class="project-image"><i aria-hidden="true" class="fas fa-boxes-stacked"></i></div><div class="project-content"><h3>StockBridge</h3><p>Event-driven inventory reconciliation with idempotent webhook ingestion, append-only movement ledger, and transactional outbox.</p><div class="project-tags"><span class="tag">C#</span><span class="tag">.NET 8</span><span class="tag">PostgreSQL</span><span class="tag">React</span><span class="tag">Docker</span></div><a class="project-github-link" href="https://github.com/tanak-pixel/StockBridge" rel="noopener noreferrer" target="_blank">View on GitHub ↗</a></div></article><article class="project-card reveal"><div class="project-image"><i aria-hidden="true" class="fas fa-triangle-exclamation"></i></div><div class="project-content"><h3>SignalDesk</h3><p>Local incident-reporting prototype featuring report submission, status updates, API validation, and stale-update protection using HTTP 409.</p><div class="project-tags"><span class="tag">ASP.NET Core</span><span class="tag">React</span><span class="tag">TypeScript</span></div><a class="project-github-link" href="https://github.com/tanak-pixel/signaldesk" rel="noopener noreferrer" target="_blank">View on GitHub ↗</a></div></article><article class="project-card reveal"><div class="project-image"><i aria-hidden="true" class="fas fa-eye"></i></div><div class="project-content"><h3>Study Guardian</h3><p>Real-time webcam phone detection with configurable confidence, hold time, and alerts for study-session distraction monitoring.</p><div class="project-tags"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">YOLO</span></div><a class="project-github-link" href="https://github.com/tanak-pixel/study-guardian" rel="noopener noreferrer" target="_blank">View on GitHub ↗</a></div></article><article class="project-card reveal"><div class="project-image"><i aria-hidden="true" class="fas fa-comments"></i></div><div class="project-content"><h3>Multi-Threaded Chat Application</h3><p>Socket-based Java chat application supporting concurrent client connections using multithreading.</p><div class="project-tags"><span class="tag">Java</span><span class="tag">Sockets</span><span class="tag">Multithreading</span></div><a class="project-github-link" href="https://github.com/tanak-pixel/Multi-Threaded-Chat-App" rel="noopener noreferrer" target="_blank">View on GitHub ↗</a></div></article></div>
+</section>
+<!-- Contact Section -->
+<section class="reveal" id="certifications"><h2>Certifications &amp; Recognition</h2><div class="cert-grid"><div class="cert-card reveal"><h3>ServiceNow Certified System Administrator</h3><p>May 2026</p></div><div class="cert-card reveal"><h3>Google AI Professional Certificate &amp; Specialization</h3><p>Jun 2026</p></div><div class="cert-card reveal"><h3>IBM Introduction to Cloud Computing &amp; DevOps</h3><p>Jun 2026</p></div><div class="cert-card reveal"><h3>EY &amp; Microsoft AI Skills Passport</h3><p>Oct 2026</p></div><div class="cert-card reveal"><h3>ServiceNow Certified Application Developer (CAD)</h3><p>In preparation</p></div><div class="cert-card reveal"><h3>Runner-Up — 50th Annual SFA Coding Competition</h3><p>Apr 2025</p></div></div></section><section class="reveal" id="contact">
+<h2>Let's Connect</h2>
+<div class="contact-content">
+<p>I'm always interested in hearing about internship opportunities, collaborative projects, or just connecting with fellow developers. Feel free to reach out!</p>
+<a class="btn btn-primary" href="mailto:tanak.solanki05@gmail.com">
+<i class="fas fa-envelope"></i> Send Me an Email
+            </a>
+<div class="social-links">
+<a class="social-link" href="https://github.com/tanak-pixel" target="_blank" title="GitHub">
+<i class="fab fa-github"></i>
+</a>
+<a class="social-link" href="https://www.linkedin.com/in/tanak-solanki" target="_blank" title="LinkedIn">
+<i class="fab fa-linkedin"></i>
+</a>
+<a class="social-link" href="tel:+19362250314" title="Phone">
+<i class="fas fa-phone"></i>
+</a>
+<a class="social-link" download="" href="Tanak_Solanki_Resume.pdf" title="Resume">
+<i class="fas fa-file-pdf"></i>
+</a>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer>
+<p>© 2026 Tanak Solanki · Designed &amp; built with care.</p>
+</footer>
+<!-- Chatbot -->
+<button aria-label="Open portfolio assistant" class="chatbot-toggle" id="chatbotToggle">
+<i class="fas fa-comment"></i>
+</button>
+<div class="chatbot-container" id="chatbotContainer"><div class="chatbot-header"><h3>Portfolio Assistant</h3><button aria-label="Close chat" class="chatbot-close" id="chatbotClose" type="button">×</button></div><div aria-live="polite" class="chatbot-messages" id="chatbotMessages" role="log"><div class="message bot">Hi! Ask me about Tanak’s projects, skills, experience, certifications, or contact details.</div></div><div class="chatbot-input-container"><input aria-label="Chat message" class="chatbot-input" id="chatbotInput" placeholder="Ask about Tanak..."/><button aria-label="Send message" class="chatbot-send" id="chatbotSend" type="button">Send</button></div></div>
+<script>
+        // Navigation Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Accessible scroll reveal, with graceful fallback.
+        const revealItems = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {threshold: 0.08, rootMargin: '0px 0px -20px 0px'});
+            revealItems.forEach(item => revealObserver.observe(item));
+        } else {
+            revealItems.forEach(item => item.classList.add('is-visible'));
+        }
+        const siteNav = document.querySelector('nav');
+        const updateNav = () => siteNav.classList.toggle('scrolled', window.scrollY > 40);
+        window.addEventListener('scroll', updateNav, {passive:true});
+        updateNav();
+        const menuButton = document.getElementById('menuToggle');
+        menuButton.addEventListener('click', () => menuButton.setAttribute('aria-expanded', String(navLinks.classList.contains('active'))));
+        document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => menuButton.setAttribute('aria-expanded', 'false')));
+
+        // Chatbot functionality
+        const chatbotToggle = document.getElementById('chatbotToggle');
+        const chatbotContainer = document.getElementById('chatbotContainer');
+        const chatbotClose = document.getElementById('chatbotClose');
+        const chatbotInput = document.getElementById('chatbotInput');
+        const chatbotSend = document.getElementById('chatbotSend');
+        const chatbotMessages = document.getElementById('chatbotMessages');
+
+        chatbotToggle.addEventListener('click', () => {
+            chatbotContainer.classList.toggle('active');
+        });
+
+        chatbotClose.addEventListener('click', () => {
+            chatbotContainer.classList.remove('active');
+        });
+
+        // Answers are based on the resume; this is a local rule-based assistant.
+        const knowledgeBase = {
+            certifications: {keywords: ['certification','certificate','certified','cad','csa'], response: 'Tanak holds the ServiceNow CSA, Google AI, IBM Cloud Computing & DevOps, and EY & Microsoft AI Skills Passport credentials. He is preparing for the ServiceNow CAD certification.'},
+            projects: {keywords: ['project','stockbridge','signaldesk','guardian','chat app','portfolio','built'], response: 'Featured projects: StockBridge (event-driven inventory), SignalDesk (incident reporting), Study Guardian (computer vision phone detection), and a multithreaded Java chat application.'},
+            experience: {keywords: ['experience','work','intern','provalus','employment','job'], response: 'Tanak is a Provalus Meridian Program Intern (Jul–Aug 2026 and Sep 2026–present) studying ServiceNow development and an SFA Student IT Support Assistant (Aug 2025–present), resolving 20+ tickets weekly.'},
+            skills: {keywords: ['skill','technology','programming','language','stack'], response: 'Tanak works with C#, Java, Python, JavaScript, TypeScript, React, ASP.NET Core, SQL, PostgreSQL, Docker, ServiceNow, REST APIs, OpenCV, and YOLO.'},
+            education: {keywords: ['education','school','university','degree','study','gpa','graduate'], response: 'Tanak is pursuing a B.S. in Computer Science at Stephen F. Austin State University, expected December 2026, with a 3.2 GPA.'},
+            contact: {keywords: ['contact','email','phone','reach','connect','linkedin','github'], response: 'Email: tanak.solanki05@gmail.com\nLinkedIn: linkedin.com/in/tanak-solanki\nGitHub: github.com/tanak-pixel'},
+            opportunities: {keywords: ['hiring','available','opportunity','full-time','role'], response: 'Tanak is interested in software engineering, ServiceNow development, and technical roles. Reach out by email to discuss opportunities.'}
+        };
+
+        function getBotResponse(userMessage) {
+            const message = userMessage.toLowerCase();
+            
+            // Check for greetings
+            if (message.match(/^(hi|hello|hey|greetings)/)) {
+                return "Hello! I'm here to help you learn more about Tanak. What would you like to know?";
+            }
+            
+            // Check for thanks
+            if (message.match(/(thank|thanks)/)) {
+                return "You're welcome! Is there anything else you'd like to know about Tanak?";
+            }
+            
+            // Search knowledge base
+            for (const [category, data] of Object.entries(knowledgeBase)) {
+                if (data.keywords.some(keyword => message.includes(keyword))) {
+                    return data.response;
+                }
+            }
+            
+            // Default response
+            return "I'm not sure about that. You can ask me about Tanak's skills, experience, education, projects, or contact information. Or feel free to reach out directly at tanak.solanki05@gmail.com!";
+        }
+
+        function addMessage(text, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+            
+            // Handle line breaks in bot messages
+            if (!isUser && text.includes('\n')) {
+                const lines = text.split('\n');
+                lines.forEach((line, index) => {
+                    const lineText = document.createTextNode(line);
+                    messageDiv.appendChild(lineText);
+                    if (index < lines.length - 1) {
+                        messageDiv.appendChild(document.createElement('br'));
+                    }
+                });
+            } else {
+                messageDiv.textContent = text;
+            }
+            
+            chatbotMessages.appendChild(messageDiv);
+            
+            // Smooth scroll to bottom
+            setTimeout(() => {
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }, 100);
+        }
+
+        function askQuestion(question) {
+            if (!question || question.trim() === '') return;
+            
+            addMessage(question, true);
+            
+            setTimeout(() => {
+                const response = getBotResponse(question);
+                addMessage(response);
+            }, 600);
+        }
+
+        function sendMessage() {
+            const message = chatbotInput.value.trim();
+            if (message) {
+                addMessage(message, true);
+                chatbotInput.value = '';
+                
+                // Show typing indicator briefly
+                setTimeout(() => {
+                    const response = getBotResponse(message);
+                    addMessage(response);
+                }, 600);
+            }
+        }
+
+        chatbotSend.addEventListener('click', (e) => {
+            e.preventDefault();
+            sendMessage();
+        });
+
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Prevent form submission if Enter is pressed
+        chatbotInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+            }
+        });
+
+        // Make askQuestion function global for quick action buttons
+        window.askQuestion = askQuestion;
+    </script>
+</body></html>
